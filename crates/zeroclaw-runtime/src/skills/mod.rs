@@ -1022,6 +1022,7 @@ fn load_skill_toml(path: &Path) -> Result<Skill> {
         tools: manifest.tools,
         prompts,
         location: Some(path.to_path_buf()),
+        always: false,
     })
 }
 
@@ -1048,6 +1049,7 @@ fn load_skill_md(path: &Path, dir: &Path) -> Result<Skill> {
         tools: Vec::new(),
         prompts: vec![parsed.body],
         location: Some(path.to_path_buf()),
+        always: false,
     })
 }
 
@@ -1087,6 +1089,7 @@ fn load_open_skill_md(path: &Path) -> Result<Skill> {
         tools: Vec::new(),
         prompts: vec![parsed.body],
         location: Some(path.to_path_buf()),
+        always: false,
     }))
 }
 
@@ -2875,6 +2878,7 @@ mod prompt_callable_name_tests {
             tools: vec![tool("run.lint", "shell")],
             prompts: Vec::new(),
             location: None,
+            always: false,
         };
 
         let prompt = skills_to_prompt_with_mode(
